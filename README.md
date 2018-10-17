@@ -1,5 +1,6 @@
 # Codefundo-
-
+Team Name - Two and a half men
+Rishabh Jain, Himanshu Goyal, Adithya Iyer
 Our aim is to help manage natural disasters and we believe that decreasing losses of human life should be our number one priority in this agenda. With that in mind, we present Save-D, a disaster management app which will have your back when you need it the most, even if no one else does. Our app will allow users to get help, even if they themselves are incapacitated to ask for it. Here’s how:
 
 While initially setting up the app, it will ask for the user‘s name, medical record, phone number, alternate phone number and access to the device’s location. Users will also be asked to fill contact details of 4 people (who will henceforth be addressed as the ‘protectorate’) whom he can rely upon for help if any disaster strikes. These need to be people from different walks of life who are located at different distances from the user so that at least one of them is able to help in times of need.
