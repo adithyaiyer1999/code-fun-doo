@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
    # url('', views.index, name='index'),
-    url('customers/',views.customerList),
+    url(r'^customers/$',views.customerList),
+    url(r'^customers/(?P<name>[\w.@+-]+)/$',views.customerDetails)
 ]

@@ -24,3 +24,26 @@ def customerList(request):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
+
+@csrf_exempt
+def customerDetails(request, name):
+    try:
+        customer1 = customer.objects.get(email_id = name)
+
+    except customer1.DoesNotExist:
+        return HttpResponse(status=404)
+
+    #get method to get the tasks associated with a customer as json
+    if request.method == 'GET':
+        serializer =customerSerializer(customer1)
+        return JsonResponse(serializer.data)
+
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = customerSerializer(customer1, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
+
