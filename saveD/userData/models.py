@@ -11,7 +11,7 @@ class disaster(models.Model):
 
 
 class customer(models.Model):
-    id = models.AutoField(primary_key=True)
+    id= models.AutoField(primary_key=True)
     username = models.CharField(max_length=400,default='null')
     email_id = models.CharField(max_length=600,default='null')
     phoneNumber = models.CharField(max_length=20,default='null',null=True)

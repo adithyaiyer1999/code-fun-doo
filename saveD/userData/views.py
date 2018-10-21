@@ -30,8 +30,15 @@ def customerDetails(request, name):
     try:
         customer1 = customer.objects.get(email_id = name)
 
-    except customer1.DoesNotExist:
-        return HttpResponse(status=404)
+    except customer.objects.filter(email_id = name)==False:
+        if request.method == 'PUT':
+            data = JSONParser().parse(request)
+            serializer = customerSerializer(customer1, data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return JsonResponse(serializer.data)
+            return JsonResponse(serializer.errors, status=400)
+
 
     #get method to get the tasks associated with a customer as json
     if request.method == 'GET':
@@ -46,4 +53,6 @@ def customerDetails(request, name):
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=400)
+
+
 
