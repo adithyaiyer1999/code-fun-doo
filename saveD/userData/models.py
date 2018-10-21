@@ -1,5 +1,11 @@
 from django.db import models
 
+class disaster(models.Model):
+    id =models.AutoField(primary_key=True)
+    disasterName = models.CharField(max_length=200,default='null')
+    location = models.CharField(max_length=200,default='null')
+    status = models.BooleanField(default=True)
+
 class customer(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=400,default='null')
@@ -12,15 +18,18 @@ class customer(models.Model):
     location_long = models.CharField(max_length=300,default='null')
     blood_group = models.CharField(max_length=4,default='null')
     medical_history =models.CharField(max_length=200,default='null')
-    isPersonSafe = models.BooleanField(default=True)
-    disasterPresentlyIn = models.ForeignKey(disasterData,on_delete=models.CASCADE)
+    isPersonInTrouble= models.BooleanField(default=False)
+    disasterIn = models.ForeignKey(disaster, on_delete=models.CASCADE,null=True)
+
 
 
     def __str__(self):
         return self.username
 
 
-class disasterData(models.Model):
-    disasterDescription = models.CharField(max_length=400, default='null')
-    disasterLocation = models.CharField(max_length=400,default='null')
-    disasterStatus = models.BooleanField(default=False)
+
+
+
+
+
+
