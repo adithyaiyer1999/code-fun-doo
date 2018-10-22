@@ -27,13 +27,13 @@ def customerList(request):
 
 @csrf_exempt
 def customerDetails(request, name):
-    try:
+    if customer.objects.filter(email_id = name).exists():
         customer1 = customer.objects.get(email_id = name)
 
-    except customer.objects.filter(email_id = name)==False:
+    else:
         if request.method == 'PUT':
             data = JSONParser().parse(request)
-            serializer = customerSerializer(customer1, data=data)
+            serializer = customerSerializer(data=data)
             if serializer.is_valid():
                 serializer.save()
                 return JsonResponse(serializer.data)
