@@ -24,16 +24,11 @@ class customer(models.Model):
     medical_history =models.CharField(max_length=200,default='null',null=True)
     isPersonInTrouble= models.BooleanField(default=False)
     disasterIn = models.ForeignKey(disaster, on_delete=models.CASCADE,null=True)
+    city = models.CharField(max_length=600,default='null',null=True)
 
 
 
     def __str__(self):
         return self.username
-
-
-
-
-
-
 
 
